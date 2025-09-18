@@ -1,0 +1,34 @@
+# --- Visual Studio / .NET ---
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Rider / VS Code
+.idea/
+*.sln.iml
+.vscode/
+
+# --- Angular / Node ---
+clientapp/node_modules/
+clientapp/dist/
+clientapp/.angular/
+clientapp/.cache/
+clientapp/.env*
+
+# Misc
+Thumbs.db
+.DS_Store
