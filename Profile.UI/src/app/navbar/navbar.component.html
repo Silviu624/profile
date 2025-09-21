@@ -1,0 +1,29 @@
+<nav class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end position-sticky top-0 min-vh-100"
+    style="width: 240px;">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+        <span class="fs-5 fw-semibold">My App</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                class="nav-link">
+                Home
+            </a>
+        </li>
+        <li>
+            <a routerLink="/experience" routerLinkActive="active" class="nav-link">
+                Experience
+            </a>
+        </li>
+        <li>
+            <a routerLink="/contact" routerLinkActive="active" class="nav-link">
+                Contact
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="small text-muted">
+        ~silviu rocks!
+    </div>
+</nav>
