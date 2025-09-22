@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ExperienceComponent } from './experience/experience.component';
-import { ContactComponent } from './contact/contact.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FormsModule } from '@angular/forms';
+import { EducationComponent } from './components/education/education.component';
+import { ProjectComponent } from './components/project/project.component';
+import { ReviewComponent } from './components/review/review.component';
 
 @NgModule({
     declarations: [
@@ -13,11 +17,15 @@ import { ContactComponent } from './contact/contact.component';
         NavbarComponent,
         HomeComponent,
         ExperienceComponent,
-        ContactComponent   // declare your root component
+        ContactComponent,
+        EducationComponent,
+        ProjectComponent,
+        ReviewComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -23,3 +23,8 @@
         min-height: auto;
     }
 }
+
+.btn {
+    font-size: 13px;
+    background-color: #577ebd;
+}
