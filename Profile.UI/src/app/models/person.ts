@@ -1,3 +1,4 @@
+
 export class Person {
     name: string = "";
     age: number = 0;
@@ -6,10 +7,5 @@ export class Person {
     phone: string = "";
     address: string = "";
     about: string = "";
-    experiences: string[] = [];
     skills: string[] = [];
-    education: string[] = [];
-    projects: string[] = [];
-    linkedin: string = "";
-    github: string = ""
 }

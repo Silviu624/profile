@@ -1,3 +1,10 @@
 .p-class {
     font-family: 'Courier New', Courier, monospace;
 }
+
+.inline-container {
+    display: flex;
+    gap: 35px;
+    /* space between items */
+    flex-wrap: wrap;
+}
