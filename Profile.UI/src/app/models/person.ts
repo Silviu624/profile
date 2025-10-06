@@ -4,8 +4,10 @@ export class Person {
     age: number = 0;
     title: string = "";
     email: string = "";
-    phone: string = "";
     address: string = "";
     about: string = "";
     skills: string[] = [];
+    phoneNumber: string = "";
+    linkedIn: string = "";
+    instagram: string = "";
 }

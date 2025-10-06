@@ -12,7 +12,30 @@
 
     <hr />
 
-    <!--Header-->
-    <h4>About</h4>
-    <p>{{person.about}}</p>
-</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">About</h5>
+                    <p class="card-text">{{person.about}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md 6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Contact</h5>
+                    <p class="card-text">
+                        <strong>Age:</strong> {{person.age}} <br />
+                        <strong>Email:</strong> {{person.email}} <br />
+                        <strong>Phone:</strong> {{person.phoneNumber}} <br />
+                        <strong>Address:</strong> {{person.address}} <br />
+                        <strong>LinkedIn: </strong> <a href="{{person.linkedIn}}"
+                            target="_blank">{{person.linkedIn}}</a><br />
+                        <strong>Instagram: </strong> <a href="{{person.instagram}}"
+                            target="_blank">{{person.instagram}}</a><br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>

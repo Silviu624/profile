@@ -17,9 +17,11 @@ export class HomeComponent {
     this.person.title = "Software Developer | Angular - C# - .NET Framework";
     this.person.age = 32;
     this.person.email = "grz.silviu@gmail.com";
-    this.person.phone = "+40728319031";
+    this.person.phoneNumber = "+40728319031";
     this.person.address = "Saint-Julien-en-Genevois";
-    this.person.about = "Currently living in France, in Saint-Julien-en-Genevois. Graduated with a degree in Computer Science from the University of Petroleum and Gas from Ploiesti, specializing in software development. Most recently, served as a Tech Lead at Cognyte, where responsibilities included overseeing a team of eight developers, managing over ten active projects, and delivering technical decisions to ensure successful outcomes. Proficient in Angular, C#, and .NET Framework, with additional expertise in Docker, Kubernetes, and ASP.NET Web API. Motivated by problem-solving and enabling team collaboration, contributed to both customer-focused solutions and internal technical advancements. Prior experience includes ERP application development and AutoCAD integrations.";
+    this.person.about = "Currently living in Bruxelles, and some other stuff and i will complete this later. Still don t know what to write here.Currently living in Bruxelles, and some other stuff and i will complete this later. Still don t know what to write here.Currently living in Bruxelles, and some other stuff and i will complete this later. Still don t know what to write here.";
     this.person.skills = [];
+    this.person.instagram = "https://www.instagram.com/gr.silviu/";
+    this.person.linkedIn = "https://www.linkedin.com/in/silviu-teodor-groza-2b9b90128/";
   }
 }

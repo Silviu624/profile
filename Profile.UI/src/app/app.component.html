@@ -1,6 +1,13 @@
-<div class="d-flex min-vh-100 bg-custom">
-  <app-navbar></app-navbar>
-  <main class="flex-grow-1 ps-1 pe-1 pt-0 pb-0">
-    <router-outlet></router-outlet>
-  </main>
+<!-- app.component.html -->
+<div *ngIf="isMobile" class="mobile-block">
+  🚫 Not supported on mobile. Please use a desktop browser.
+</div>
+
+<div *ngIf="!isMobile">
+  <div class="d-flex min-vh-100 bg-custom">
+    <app-navbar></app-navbar>
+    <main class="flex-grow-1 ps-1 pe-1 pt-0 pb-0">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>
