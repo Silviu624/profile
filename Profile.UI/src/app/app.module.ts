@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { EducationComponent } from './components/education/education.component';
 import { ProjectComponent } from './components/project/project.component';
 import { ReviewComponent } from './components/review/review.component';
+import { LoginComponent } from './components/login/login.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -18,14 +20,17 @@ import { ReviewComponent } from './components/review/review.component';
         ExperienceComponent,
         EducationComponent,
         ProjectComponent,
-        ReviewComponent
+        ReviewComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule
     ],
-    providers: [],
+    providers: [
+        provideHttpClient(withInterceptorsFromDi())
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

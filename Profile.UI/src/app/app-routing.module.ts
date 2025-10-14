@@ -5,6 +5,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { EducationComponent } from './components/education/education.component';
 import { ProjectComponent } from './components/project/project.component';
 import { ReviewComponent } from './components/review/review.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'education', component: EducationComponent },
     { path: 'project', component: ProjectComponent },
     { path: "review", component: ReviewComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', redirectTo: 'home' }
 ];
 

@@ -1,0 +1,22 @@
+<div class="bg-light w-100 h-100 p-5 border border">
+    <div class="container mt-5" style="max-width: 400px;">
+        <h3 class="text-center mb-4">Login as admin</h3>
+
+        <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email"
+                    placeholder="you@example.com" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" [(ngModel)]="password" name="password"
+                    placeholder="Your password" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+
+</div>
