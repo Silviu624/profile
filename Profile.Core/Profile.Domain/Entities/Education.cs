@@ -16,11 +16,11 @@ namespace Profile.Domain.Entities
         public DateTime EndDate { get; private set; }
         public string Description { get; private set; }
 
-        public Education(string institutionName, string degree, string filedOfStudy, DateTime startDate, DateTime endDate, string description)
+        public Education(string institutionName, string degree, string fieldOfStudy, DateTime startDate, DateTime endDate, string description)
         {
             this.InstitutionName = institutionName;
             this.Degree = degree;
-            this.FieldOfStudy = filedOfStudy;
+            this.FieldOfStudy = fieldOfStudy;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.Description = description;

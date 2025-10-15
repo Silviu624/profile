@@ -20,7 +20,7 @@ namespace Profile.Domain.Entities
         public string LinkedIn { get; private set; }
         public string Instagram { get; private set; }
 
-        public Person(string name, int age, string title, string email, string address, string about, string skills, string phoneNumber, string linkedin, string instagram)
+        public Person(string name, int age, string title, string email, string address, string about, string skills, string phoneNumber, string linkedIn, string instagram)
         {
             this.Name = name;
             this.Age = age;
@@ -30,7 +30,7 @@ namespace Profile.Domain.Entities
             this.About = about;
             this.Skills = skills;
             this.PhoneNumber = phoneNumber;
-            this.LinkedIn = linkedin;
+            this.LinkedIn = linkedIn;
             this.Instagram = instagram;
         }
 

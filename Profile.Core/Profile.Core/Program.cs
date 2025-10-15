@@ -1,3 +1,5 @@
+using Profile.Infrastructure;
+
 namespace Profile.Core
 {
     public class Program
@@ -6,7 +8,7 @@ namespace Profile.Core
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.AddInfrastructure(builder.Configuration);
 
             builder.Services.AddControllers();
             builder.Services.AddCors(options => options.AddPolicy("profile", p =>

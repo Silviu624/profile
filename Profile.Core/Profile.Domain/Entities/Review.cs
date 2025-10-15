@@ -13,9 +13,9 @@ namespace Profile.Domain.Entities
         public string Name { get; private set; }
         public DateTime Date { get; private set; }
 
-        public Review(string reviewcComment, string name, DateTime date)
+        public Review(string reviewComment, string name, DateTime date)
         {
-            this.ReviewComment = reviewcComment;
+            this.ReviewComment = reviewComment;
             this.Name = name;
             this.Date = date;
         }
