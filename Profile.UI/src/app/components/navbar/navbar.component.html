@@ -39,7 +39,6 @@
             admin</button>
     </div>
     <div *ngIf="isLoggedInFunction()">
-        <button type="button" class="btn btn-primary" routerLinkActive="active" routerLink="/login"
-            (click)="logout()">Logout</button>
+        <button type="button" class="btn btn-primary" routerLinkActive="active" (click)="logout()">Logout</button>
     </div>
 </nav>

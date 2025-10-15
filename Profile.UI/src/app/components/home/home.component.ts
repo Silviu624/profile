@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Person } from '../../models/person';
 
+import { AuthService } from '../../services/authService';
+
 @Component({
   selector: 'app-home',
   standalone: false,
@@ -9,8 +11,9 @@ import { Person } from '../../models/person';
 })
 export class HomeComponent {
   public person!: Person;
+  public editMode: boolean = false;
 
-  constructor() {
+  constructor(private _authService: AuthService) {
     // reading from db can be done here
     this.person = new Person();
     this.person.name = "Silviu Teodor GROZA";
@@ -23,5 +26,9 @@ export class HomeComponent {
     this.person.skills = [];
     this.person.instagram = "https://www.instagram.com/gr.silviu/";
     this.person.linkedIn = "https://www.linkedin.com/in/silviu-teodor-groza-2b9b90128/";
+  }
+
+  public isLoggedInFunction(): boolean {
+    return this._authService.isLoggedIn();
   }
 }

@@ -1,12 +1,20 @@
 <div class="bg-light w-100 h-100 p-5 border border">
+    <button *ngIf="isLoggedInFunction()" class="btn btn-primary mb-3" (click)="editMode = !editMode">
+        {{ editMode ? 'Save' : 'Edit' }}
+    </button>
+
     <!--Header-->
     <div class="inline-container">
         <div class="card" style="width: 10rem;">
             <img src="profile.png" class="card-img-top" alt="...">
         </div>
-        <div>
+        <div *ngIf="!editMode">
             <h2>{{person.name}}</h2>
             <p class="p-class">{{person.title}}</p>
+        </div>
+        <div *ngIf="editMode">
+            <textarea class="form-control " [(ngModel)]="person.name"></textarea>
+            <textarea class="form-control " [(ngModel)]="person.title"></textarea>
         </div>
     </div>
 
@@ -17,13 +25,18 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">About</h5>
-                    <p class="card-text">{{person.about}}</p>
+                    <div *ngIf="!editMode">
+                        <p class="card-text">{{person.about}}</p>
+                    </div>
+                    <div *ngIf="editMode">
+                        <textarea class="form-control " [(ngModel)]="person.about"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md 6">
             <div class="card">
-                <div class="card-body">
+                <div *ngIf="!editMode" class="card-body">
                     <h5 class="card-title">Contact</h5>
                     <p class="card-text">
                         <strong>Age:</strong> {{person.age}} <br />
@@ -34,6 +47,23 @@
                             target="_blank">{{person.linkedIn}}</a><br />
                         <strong>Instagram: </strong> <a href="{{person.instagram}}"
                             target="_blank">{{person.instagram}}</a><br />
+                    </p>
+                </div>
+                <div *ngIf="editMode" class="card-body">
+                    <h5 class="card-title">Contact</h5>
+                    <p class="card-text">
+                        <strong>Age:</strong> <textarea class="form-control " [(ngModel)]="person.age"></textarea>
+                        <br />
+                        <strong>Email:</strong> <textarea class="form-control " [(ngModel)]="person.email"></textarea>
+                        <br />
+                        <strong>Phone:</strong> <textarea class="form-control "
+                            [(ngModel)]="person.phoneNumber"></textarea> <br />
+                        <strong>Address:</strong> <textarea class="form-control "
+                            [(ngModel)]="person.address"></textarea> <br />
+                        <strong>LinkedIn: </strong> <textarea class="form-control "
+                            [(ngModel)]="person.linkedIn"></textarea><br />
+                        <strong>Instagram: </strong> <textarea class="form-control "
+                            [(ngModel)]="person.instagram"></textarea><br />
                     </p>
                 </div>
             </div>

@@ -9,6 +9,10 @@ namespace Profile.Core
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddCors(options => options.AddPolicy("profile", p =>
+                p.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod()));
 
             var app = builder.Build();
 
@@ -18,6 +22,7 @@ namespace Profile.Core
 
             app.UseAuthorization();
 
+            app.UseCors("profile");
 
             app.MapControllers();
 
