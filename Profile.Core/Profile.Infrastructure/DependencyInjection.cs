@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Profile.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,10 @@ namespace Profile.Infrastructure
             {
                 options.UseSqlServer(connectionString);
             });
+
+            services.AddScoped<IProfileDbContext>(sp => sp.GetRequiredService<ProfileDbContext>());
+
+
 
             return services;
         }

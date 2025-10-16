@@ -1,0 +1,29 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Profile.Application.Common;
+using Profile.Application.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Profile.Application.Features.Projects
+{
+    public class UpdateProjectCommand
+    {
+        private readonly IProfileDbContext _context;
+
+        public UpdateProjectCommand(IProfileDbContext context) => this._context = context;
+
+        public async Task<Result<bool>> Handle(Guid projectId, string name, string description, string github, string technologies, CancellationToken ct)
+        {
+            if (string.IsNullOrWhiteSpace(name)) return Result<bool>.Fail("Project name is required.");
+
+            var project = await this._context.Projects.FirstOrDefaultAsync(p => p.Id == projectId, ct);
+            this._context.Projects.Update(project);
+            await this._context.SaveChangesAsync(ct);
+
+            return Result<bool>.Ok(true);
+        }
+    }
+}

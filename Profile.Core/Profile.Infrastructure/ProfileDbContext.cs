@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Profile.Application.Interfaces;
 using Profile.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Profile.Infrastructure
 {
-    public class ProfileDbContext: DbContext
+    public class ProfileDbContext: DbContext, IProfileDbContext
     {
         public ProfileDbContext(DbContextOptions<ProfileDbContext> options) : base (options) { }
 

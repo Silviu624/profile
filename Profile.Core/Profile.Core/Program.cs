@@ -1,3 +1,4 @@
+using Profile.Application.Interfaces;
 using Profile.Infrastructure;
 
 namespace Profile.Core
@@ -9,6 +10,7 @@ namespace Profile.Core
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddInfrastructure(builder.Configuration);
+           
 
             builder.Services.AddControllers();
             builder.Services.AddCors(options => options.AddPolicy("profile", p =>
