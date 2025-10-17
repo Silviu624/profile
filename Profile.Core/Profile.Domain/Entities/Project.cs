@@ -10,10 +10,10 @@ namespace Profile.Domain.Entities
 {
     public class Project : BaseEntity
     {
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string Github { get; private set; }
-        public string Technologies { get; private set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Github { get; set; }
+        public string Technologies { get; set; }
 
         public Project(string name, string description, string github, string technologies)
         {

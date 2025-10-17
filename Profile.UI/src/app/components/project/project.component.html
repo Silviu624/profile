@@ -1,22 +1,69 @@
 <div class="bg-light w-100 h-100 p-5 border border">
+    <button *ngIf="isLoggedInFunction()" class="btn btn-dark btn-sm" (click)="addNewProject()">
+        Add new project
+    </button>
+
+
     <div class="accordion" id="accordionPanelsStayOpenExample">
-        <div *ngFor="let project of projects; let i = index" class="accordion-item">
-            <h2 class="accordion-header">
+        <div *ngFor="let project of projects; let i = index;" class="accordion-item">
+            <h2 class="accordion-header position-relative">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     [attr.data-bs-target]="'#panelsStayOpen-collapse' + i" aria-expanded="true"
                     [attr.aria-controls]="'panelsStayOpen-collapse' + i">
                     {{project.name}}
                 </button>
+                <button *ngIf="isLoggedInFunction()" class="btn btn-dark btn-sm" type="button"
+                    (click)="toggleEdit(i, project)">
+                    {{ isEditing(i) ? 'Save' : 'Edit' }}
+                </button>
+                <button *ngIf="isLoggedInFunction() && isEditing(i)" class="btn btn-dark btn-sm" type="button"
+                    (click)="cancelEdit()">
+                    Cancel
+                </button>
+                <button *ngIf="isLoggedInFunction() && !isEditing(i)"
+                    class="btn btn-dark btn-sm position-absolute top-2 end-0 m-2" type="button"
+                    (click)="delete(i, project)">
+                    X
+                </button>
             </h2>
+
             <div [attr.id]="'panelsStayOpen-collapse' + i" class="accordion-collapse collapse show">
-                <div class="accordion-body">
-                    <p>{{project.description}}</p>
-                    <p class="p-class">{{project.github}}</p>
-                    <h6>Technologies Used:</h6>
-                    <ul>
-                        <li *ngFor="let tech of project.technologies">{{tech}}</li>
-                    </ul>
-                </div>
+                <ng-container *ngIf="!isEditing(i); else editTpl">
+                    <p>{{ project.description }}</p>
+                    <p class="p-class">
+                        <a [href]="project.github" target="_blank" rel="noopener"
+                            style="color: inherit; text-decoration: none;">
+                            {{ project.github }}
+                        </a>
+                    </p>
+                    <p><strong>Technologies: </strong>{{ project.technologies }}</p>
+                </ng-container>
+
+                <!-- EDIT MODE -->
+                <ng-template #editTpl>
+                    <div class="mb-2">
+                        <label class="form-label">Name</label>
+                        <input class="form-control" [(ngModel)]="editBuffer.name" [ngModelOptions]="{standalone:true}">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="3" [(ngModel)]="editBuffer.description"
+                            [ngModelOptions]="{standalone:true}"></textarea>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">GitHub URL</label>
+                        <input class="form-control" [(ngModel)]="editBuffer.github"
+                            [ngModelOptions]="{standalone:true}">
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Technologies</label>
+                        <input class="form-control" [(ngModel)]="editBuffer.technologies"
+                            [ngModelOptions]="{standalone:true}">
+                    </div>
+                </ng-template>
             </div>
         </div>
     </div>

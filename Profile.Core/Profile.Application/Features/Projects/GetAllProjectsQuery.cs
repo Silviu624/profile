@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Profile.Application.Features.Projects
 {
-    internal class GetAllProjectsQuery
+    public class GetAllProjectsQuery
     {
         private readonly IProfileDbContext _context;
         public GetAllProjectsQuery(IProfileDbContext context) => this._context = context;

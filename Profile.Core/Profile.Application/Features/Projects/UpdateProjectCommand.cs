@@ -17,13 +17,25 @@ namespace Profile.Application.Features.Projects
 
         public async Task<Result<bool>> Handle(Guid projectId, string name, string description, string github, string technologies, CancellationToken ct)
         {
-            if (string.IsNullOrWhiteSpace(name)) return Result<bool>.Fail("Project name is required.");
+            if (string.IsNullOrWhiteSpace(name))
+                return Result<bool>.Fail("Project name is required.");
 
-            var project = await this._context.Projects.FirstOrDefaultAsync(p => p.Id == projectId, ct);
-            this._context.Projects.Update(project);
-            await this._context.SaveChangesAsync(ct);
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == projectId, ct);
+
+            if (project == null)
+                return Result<bool>.Fail("Project not found.");
+
+            // Apply updates
+            project.Name = name;
+            project.Description = description;
+            project.Github = github;
+            project.Technologies = technologies;
+
+            // No need to call Update() unless using AsNoTracking or detached entity
+            await _context.SaveChangesAsync(ct);
 
             return Result<bool>.Ok(true);
         }
+
     }
 }

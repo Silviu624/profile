@@ -8,11 +8,6 @@ namespace Profile.Core.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
-        {
-            var data = new { message = "Hello from the server! " };
-            return Ok(data);
-        }
+        
     }
 }
