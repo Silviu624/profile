@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Profile.Infrastructure;
 
@@ -11,9 +12,11 @@ using Profile.Infrastructure;
 namespace Profile.Infrastructure.Migrations
 {
     [DbContext(typeof(ProfileDbContext))]
-    partial class ProfileDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251018232336_Users")]
+    partial class Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,22 +157,6 @@ namespace Profile.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Persons");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("5103e5e5-d93f-4a6e-91e8-202dc42162b0"),
-                            About = "~to be edited~",
-                            Address = "~to be edited~",
-                            Age = 0,
-                            Email = "~to be edited~",
-                            Instagram = "~to be edited~",
-                            LinkedIn = "~to be edited~",
-                            Name = "~to be edited~",
-                            PhoneNumber = "~to be edited~",
-                            Skills = "~to be edited~",
-                            Title = "~to be edited~"
-                        });
                 });
 
             modelBuilder.Entity("Profile.Domain.Entities.Project", b =>

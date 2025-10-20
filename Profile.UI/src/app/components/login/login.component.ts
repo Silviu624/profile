@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,27 +12,23 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
-  constructor(private http: HttpClient, private router: Router) {
+  public async onSubmit() {
+    if (!this.email || !this.password) {
+      alert('Please enter both email and password');
+      return;
+    }
 
-  }
+    if (this.authService.isLoggedIn()) {
+      alert('You are already logged in');
+      return;
+    }
 
-  public onSubmit() {
-    // this.http.get<any>("https://localhost:7000/api/project").subscribe({
-    //   next: (response) => {
-    //     console.log('Login successful!', response);
-    //     this.router.navigate(['/home']);
-    //   },
-    //   error: (error) => {
-    //     console.error('There was an error during the login process!', error);
-    //     alert('An error occurred. Please try again later.');
-    //   }
-    // });
-
-
-    const loginData = { email: this.email, password: this.password };
-    localStorage.setItem("access_token", "dummy_token");
-    this.router.navigate(['/home']);
+    this.authService.login(this.email, this.password).subscribe({
+      next: () => this.router.navigate(['/home']),
+      error: err => console.error('Login failed', err)
+    });
   }
 
 }

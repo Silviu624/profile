@@ -7,21 +7,23 @@ using System.Threading.Tasks;
 
 namespace Profile.Domain.Entities
 {
-    public class Person : BaseEntity
+    public class Person 
     {
-        public string Name { get; private set; }
-        public int Age { get; private set; }
-        public string Title { get; private set; }
-        public string Email { get; private set; }
-        public string Address { get; private set; }
-        public string About { get; private set; }
-        public string Skills { get; private set; }
-        public string PhoneNumber { get; private set; }
-        public string LinkedIn { get; private set; }
-        public string Instagram { get; private set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Title { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string About { get; set; }
+        public string Skills { get; set; }
+        public string PhoneNumber { get; set; }
+        public string LinkedIn { get; set; }
+        public string Instagram { get; set; }
 
-        public Person(string name, int age, string title, string email, string address, string about, string skills, string phoneNumber, string linkedIn, string instagram)
+        public Person(Guid id, string name, int age, string title, string email, string address, string about, string skills, string phoneNumber, string linkedIn, string instagram)
         {
+            this.Id = id;
             this.Name = name;
             this.Age = age;
             this.Title = title;

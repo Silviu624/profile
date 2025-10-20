@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Person } from '../../models/person';
 
-import { AuthService } from '../../services/authService';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
-import { ProjectService } from '../../services/projectService';
-import { AuthService } from '../../services/authService';
+import { ProjectService } from '../../services/project.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-project',

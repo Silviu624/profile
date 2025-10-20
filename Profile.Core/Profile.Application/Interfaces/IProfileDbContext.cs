@@ -15,6 +15,7 @@ namespace Profile.Application.Interfaces
         DbSet<Education> Educations { get; }
         DbSet<Project> Projects { get; }
         DbSet<Review> Reviews { get; }
+        DbSet<User> Users { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

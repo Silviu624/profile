@@ -10,7 +10,8 @@ import { EducationComponent } from './components/education/education.component';
 import { ProjectComponent } from './components/project/project.component';
 import { ReviewComponent } from './components/review/review.component';
 import { LoginComponent } from './components/login/login.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './services/auth.interceptor';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,9 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
         FormsModule
     ],
     providers: [
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(
+            withInterceptors([authInterceptor])
+        )
     ],
     bootstrap: [AppComponent]
 })

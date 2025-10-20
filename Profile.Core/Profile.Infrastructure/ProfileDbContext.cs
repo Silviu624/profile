@@ -18,6 +18,7 @@ namespace Profile.Infrastructure
         public DbSet<Experience> Experiences => Set<Experience>();
         public DbSet<Project> Projects => Set<Project>();
         public DbSet<Review> Reviews => Set<Review>();
+        public DbSet<User> Users => Set<User>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -76,7 +77,29 @@ namespace Profile.Infrastructure
                 p.Property(x => x.ReviewComment).HasMaxLength(2000);
             });
 
+            modelBuilder.Entity<User>(u =>
+            {
+                u.Property(x => x.Email).HasMaxLength(300).IsRequired();
+                u.Property(x => x.PasswordHash).HasMaxLength(200).IsRequired();
+                u.Property(x => x.Role).HasMaxLength(50).IsRequired();
+            });
+
             base.OnModelCreating(modelBuilder);
+
+            var personId = Guid.Parse("5103E5E5-D93F-4A6E-91E8-202DC42162B0");
+
+            modelBuilder.Entity<Person>().HasData(new Person(
+                id: personId,
+                name: "~to be edited~",
+                age: 0,
+                title: "~to be edited~",
+                email: "~to be edited~",
+                address: "~to be edited~",
+                about: "~to be edited~",
+                skills: "~to be edited~",
+                phoneNumber: "~to be edited~",
+                linkedIn: "~to be edited~",
+                instagram: "~to be edited~"));
         }
     }
 }
