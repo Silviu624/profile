@@ -4,6 +4,7 @@ using Profile.Application.Features.Auth;
 using Profile.Application.Features.Persons;
 using Profile.Application.Features.Projects;
 using Profile.Application.Interfaces;
+using Profile.Domain.Entities;
 using Profile.Infrastructure;
 using System.Text;
 
@@ -57,6 +58,33 @@ namespace Profile.Core
             //app.UseAuthorization();
             app.UseCors("profile");
             app.MapControllers();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ProfileDbContext>();
+                context.Database.EnsureCreated();
+
+                if(!context.Persons.Any())
+                {
+                    context.Persons.Add(new Person
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = "~to be edited~",
+                        DateOfBirth = new DateTime(1990, 1, 1),
+                        Title = "~to be edited~",
+                        Email = "~to be edited~",
+                        Address = "~to be edited~",
+                        About = "~to be edited~",
+                        Skills = "~to be edited~",
+                        PhoneNumber = "~to be edited~",
+                        LinkedIn = "~to be edited~",
+                        Instagram = "~to be edited~",
+                        Nationality = "~to be edited~"
+                    });
+
+                    context.SaveChanges();
+                }
+            }
 
             app.Run();
         }

@@ -9,12 +9,12 @@ namespace Profile.Domain.Entities
 {
     public class Experience : BaseEntity
     {
-        public string CompanyName { get; private set; }
-        public string Role { get; private set; }
-        public DateTime StartDate { get; private set; }
-        public DateTime EndDate { get; private set; }
-        public string Description { get; private set; }
-        public string Technologies { get; private set; }
+        public string CompanyName { get; set; }
+        public string Role { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Description { get; set; }
+        public string Technologies { get; set; }
 
         public Experience (string companyName, string role, DateTime startDate, DateTime endDate, string description, string technologies)
         {

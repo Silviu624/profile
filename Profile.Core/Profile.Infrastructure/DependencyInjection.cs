@@ -23,8 +23,6 @@ namespace Profile.Infrastructure
 
             services.AddScoped<IProfileDbContext>(sp => sp.GetRequiredService<ProfileDbContext>());
 
-
-
             return services;
         }
     }

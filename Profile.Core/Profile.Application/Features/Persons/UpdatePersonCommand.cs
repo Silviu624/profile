@@ -15,7 +15,7 @@ namespace Profile.Application.Features.Persons
 
         public UpdatePersonCommand(IProfileDbContext context) => this._context = context;
 
-        public async Task<Result<bool>> Handle(Guid personId, string name, int age, string title, string email, string address, string about, string skills, string phoneNumber, string linkedIn, string instagram, CancellationToken ct)
+        public async Task<Result<bool>> Handle(Guid personId, string name, DateTime dateOfBirth, string title, string email, string address, string about, string skills, string phoneNumber, string linkedIn, string instagram, string nationality, CancellationToken ct)
         {
             var person = await this._context.Persons.FirstOrDefaultAsync(x => x.Id == personId);
 
@@ -23,7 +23,7 @@ namespace Profile.Application.Features.Persons
                 return Result<bool>.Fail("No person was found");
 
             person.Name = name;
-            person.Age = age;
+            person.DateOfBirth = dateOfBirth;
             person.Title = title;
             person.Email = email;
             person.Address = address;
@@ -32,6 +32,7 @@ namespace Profile.Application.Features.Persons
             person.PhoneNumber = phoneNumber;
             person.LinkedIn = linkedIn;
             person.Instagram = instagram;
+            person.Nationality = nationality;
 
             await this._context.SaveChangesAsync(ct);
 

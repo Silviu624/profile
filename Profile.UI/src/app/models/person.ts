@@ -1,7 +1,8 @@
 
 export class Person {
+    id: string = "";
     name: string = "";
-    age: number = 0;
+    dateOfBirth: Date = new Date();
     title: string = "";
     email: string = "";
     address: string = "";
@@ -10,4 +11,5 @@ export class Person {
     phoneNumber: string = "";
     linkedIn: string = "";
     instagram: string = "";
+    nationality: string = "";
 }

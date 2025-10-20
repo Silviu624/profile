@@ -32,10 +32,11 @@ namespace Profile.Infrastructure
                 p.Property(x => x.Skills).HasMaxLength(200);
                 p.Property(x => x.Title).HasMaxLength(200);
                 p.Property(x => x.About).HasMaxLength(2000);
-                p.Property(x => x.Age).HasMaxLength(10).IsRequired();
+                p.Property(x => x.DateOfBirth).IsRequired();
                 p.Property(x => x.Address).HasMaxLength(200);
                 p.Property(x => x.Email).HasMaxLength(320); 
                 p.Property(x => x.Skills).HasMaxLength(200);
+                p.Property(x => x.Nationality).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Education>(e =>
@@ -91,7 +92,7 @@ namespace Profile.Infrastructure
             modelBuilder.Entity<Person>().HasData(new Person(
                 id: personId,
                 name: "~to be edited~",
-                age: 0,
+                dateOfBirth: new DateTime(1990, 1, 1),
                 title: "~to be edited~",
                 email: "~to be edited~",
                 address: "~to be edited~",
@@ -99,7 +100,8 @@ namespace Profile.Infrastructure
                 skills: "~to be edited~",
                 phoneNumber: "~to be edited~",
                 linkedIn: "~to be edited~",
-                instagram: "~to be edited~"));
+                instagram: "~to be edited~",
+                nationality: "~to be edited~"));
         }
     }
 }

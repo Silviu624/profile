@@ -18,11 +18,11 @@ namespace Profile.Core.Controllers
             return result.Succces ? Ok(result.Value) : Problem("No person found.");
         }
 
-        public record UpdatePersonDto(string name, int age, string title, string email, string address, string about, string skills, string phoneNumber, string linkedIn, string instagram);
+        public record UpdatePersonDto(string name, DateTime dateOfBirth, string title, string email, string address, string about, string skills, string phoneNumber, string linkedIn, string instagram, string nationality);
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromServices] UpdatePersonCommand cmd, Guid id, [FromBody] UpdatePersonDto dto, CancellationToken ct)
         {
-            var result = await cmd.Handle(id, dto.name, dto.age, dto.title, dto.email, dto.address, dto.about, dto.skills, dto.phoneNumber, dto.linkedIn, dto.instagram, ct);
+            var result = await cmd.Handle(id, dto.name, dto.dateOfBirth, dto.title, dto.email, dto.address, dto.about, dto.skills, dto.phoneNumber, dto.linkedIn, dto.instagram, dto.nationality, ct);
             return result.Succces ? NoContent() : Problem(result.Error);
         }
     }

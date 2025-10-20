@@ -1,5 +1,5 @@
 <div class="bg-light w-100 h-100 p-5 border border">
-    <button *ngIf="isLoggedInFunction()" class="btn btn-dark mb-3" (click)="editMode = !editMode">
+    <button *ngIf="isLoggedInFunction()" class="btn btn-dark mb-3" (click)="save()">
         {{ editMode ? 'Save' : 'Edit' }}
     </button>
 
@@ -20,38 +20,31 @@
         <hr />
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">About</h5>
-                        <div *ngIf="!editMode">
-                            <p class="card-text">{{person.about}}</p>
-                        </div>
-                        <div *ngIf="editMode">
-                            <textarea class="form-control " [(ngModel)]="person.about"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="card">
                     <div *ngIf="!editMode" class="card-body">
                         <h5 class="card-title">Contact</h5>
                         <p class="card-text">
-                            <strong>Age:</strong> {{person.age}} <br />
+                            <strong>Date of birth:</strong> {{person.dateOfBirth | date:"yyyy-MM-dd"}} <br />
                             <strong>Email:</strong> {{person.email}} <br />
                             <strong>Phone:</strong> {{person.phoneNumber}} <br />
                             <strong>Address:</strong> {{person.address}} <br />
-                            <strong>LinkedIn: </strong> <a href="{{person.linkedIn}}"
-                                target="_blank">{{person.linkedIn}}</a><br />
-                            <strong>Instagram: </strong> <a href="{{person.instagram}}"
-                                target="_blank">{{person.instagram}}</a><br />
+                            <strong>Socials: </strong>
+                            <a [href]="person.instagram" target="_blank" class="me-2">
+                                <i class="bi bi-instagram "></i>
+                            </a>
+                            <a [href]="person.linkedIn" target="_blank">
+                                <i class="bi bi-linkedin "></i>
+                            </a>
+                            <br />
+
+                            <strong>Nationality:</strong> {{person.nationality}} <br />
                         </p>
                     </div>
                     <div *ngIf="editMode" class="card-body">
                         <h5 class="card-title">Contact</h5>
                         <p class="card-text">
-                            <strong>Age:</strong> <input class="form-control " [(ngModel)]="person.age">
+                            <strong>Age:</strong> <input class="form-control " [(ngModel)]="person.dateOfBirth">
                             <br />
                             <strong>Email:</strong> <input class="form-control " [(ngModel)]="person.email">
                             <br />
@@ -62,7 +55,22 @@
                                 [(ngModel)]="person.linkedIn"><br />
                             <strong>Instagram: </strong> <input class="form-control "
                                 [(ngModel)]="person.instagram"><br />
+                            <strong>Nationality:</strong> <input class="form-control " [(ngModel)]="person.nationality">
+                            <br />
                         </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">About</h5>
+                        <div *ngIf="!editMode">
+                            <p class="card-text" style="white-space: pre-line;">{{person.about}}</p>
+                        </div>
+                        <div *ngIf="editMode">
+                            <textarea class="form-control " [(ngModel)]="person.about"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>

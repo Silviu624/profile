@@ -8,3 +8,7 @@
     /* space between items */
     flex-wrap: wrap;
 }
+
+.icon {
+    color: black
+}
