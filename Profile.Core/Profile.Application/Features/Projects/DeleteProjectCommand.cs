@@ -17,7 +17,7 @@ namespace Profile.Application.Features.Projects
 
         public async Task<Result<bool>> Handle(Guid projectId, CancellationToken ct = default)
         {
-            var project = await this._context.Projects.FirstOrDefaultAsync(p => p.Id == projectId, ct);
+            var project = await this._context.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
 
             if (project is null) return Result<bool>.Fail("Project not found.");
 

@@ -1,21 +1,76 @@
 <div class="bg-light w-100 h-100 p-5 border border">
-    <div class="accordion" id="accordionPanelsStayOpenExample">
+    <button *ngIf="isLoggedInFunction()" class="btn btn-dark btn-sm" (click)="addNewExperience()">
+        Add new project
+    </button>
+    <div class="accordion">
         <div *ngFor="let experience of experiences; let i = index" class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    [attr.data-bs-target]="'#panelsStayOpen-collapse' + i" aria-expanded="true"
-                    [attr.aria-controls]="'panelsStayOpen-collapse' + i">
-                    {{experience.companyName}} - {{experience.role}} ({{experience.startDate}} - {{experience.endDate}})
-                </button>
-            </h2>
-            <div [attr.id]="'panelsStayOpen-collapse' + i" class="accordion-collapse collapse show">
-                <div class="accordion-body">
-                    <p>{{experience.description}}</p>
-                    <h6>Technologies Used:</h6>
-                    <ul>
-                        <li *ngFor="let tech of experience.technologies">{{tech}}</li>
-                    </ul>
+            <h2 class="accordion-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center flex-grow-1">
+                    <button class="accordion-button flex-grow-1" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#panelsStayOpen-collapse' + i" aria-expanded="true"
+                        [attr.aria-controls]="'panelsStayOpen-collapse' + i">
+                        {{ experience.companyName }} - {{ experience.role }}
+                        ({{ experience.startDate | date:'yyyy-MM-dd' }} - {{ experience.endDate | date:'yyyy-MM-dd' }})
+                    </button>
                 </div>
+
+                <div class="d-flex align-items-center ms-2">
+                    <button *ngIf="isLoggedInFunction()" class="btn btn-dark btn-sm me-2" type="button"
+                        (click)="toggleEdit(i, experience)">
+                        {{ isEditing(i) ? 'Save' : 'Edit' }}
+                    </button>
+
+                    <button *ngIf="isLoggedInFunction() && isEditing(i)" class="btn btn-secondary btn-sm me-2"
+                        type="button" (click)="cancelEdit()">
+                        Cancel
+                    </button>
+
+                    <button *ngIf="isLoggedInFunction() && !isEditing(i)" class="btn btn-danger btn-sm" type="button"
+                        (click)="delete(i, experience)">
+                        x
+                    </button>
+                </div>
+            </h2>
+
+            <div [attr.id]="'panelsStayOpen-collapse' + i" class="accordion-collapse collapse show">
+                <ng-container *ngIf="!isEditing(i); else editTpl">
+                    <div class="p-3">
+                        <p style="white-space: pre-line;">{{experience.description}}</p>
+                        <h5>Technologies Used:</h5>
+                        <p>{{experience.technologies}}</p>
+                    </div>
+                </ng-container>
+                <ng-template #editTpl>
+                    <div class="mb-2">
+                        <label class="form-label">Company Name: </label>
+                        <input class="form-control" [(ngModel)]="editBuffer.companyName"
+                            [ngModelOptions]="{standalone:true}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Role: </label>
+                        <input class="form-control" [(ngModel)]="editBuffer.role" [ngModelOptions]="{standalone:true}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Start date:</label>
+                        <input type="date" class="form-control" [(ngModel)]="editBuffer.startDate"
+                            [ngModelOptions]="{standalone:true}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">End date:</label>
+                        <input type="date" class="form-control" [(ngModel)]="editBuffer.endDate"
+                            [ngModelOptions]="{standalone:true}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="6" [(ngModel)]="editBuffer.description"
+                            [ngModelOptions]="{standalone:true}"></textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Technologies Used: </label>
+                        <input class="form-control" [(ngModel)]="editBuffer.technologies"
+                            [ngModelOptions]="{standalone:true}">
+                    </div>
+                </ng-template>
             </div>
         </div>
     </div>

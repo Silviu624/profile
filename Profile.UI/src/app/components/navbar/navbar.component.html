@@ -1,44 +1,45 @@
-<nav class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end position-sticky top-0 min-vh-100"
-    style="width: 240px;">
-    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none custom-brand">
+<nav class="d-flex flex-column flex-shrink-0 p-3 bg-light border-end position-sticky top-0 vh-100 overflow-auto"
+    style="width: 240px;" role="navigation" aria-label="Sidebar">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none custom-brand"
+        [routerLink]="['/home']">
         <span class="fs-5 fw-semibold">My App</span>
     </a>
-    <hr>
+
+    <hr class="my-3">
+
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-                class="nav-link">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
                 Home
             </a>
         </li>
         <li>
-            <a routerLink="/experience" routerLinkActive="active" class="nav-link">
-                Experience
-            </a>
+            <a class="nav-link" routerLink="/experience" routerLinkActive="active">Experience</a>
         </li>
         <li>
-            <a routerLink="/education" routerLinkActive="active" class="nav-link">
-                Education
-            </a>
-        </li>
-        <hr>
-        <li>
-            <a routerLink="/project" routerLinkActive="active" class="nav-link">
-                Projects
-            </a>
-        </li>
-        <li>
-            <a routerLink="/review" routerLinkActive="active" class="nav-link">
-                Reviews
-            </a>
+            <a class="nav-link" routerLink="/education" routerLinkActive="active">Education</a>
         </li>
     </ul>
-    <hr>
-    <div *ngIf="!isLoggedInFunction()">
-        <button type="button" class="btn btn-primary" routerLink="/login" routerLinkActive="active">Login - only
-            admin</button>
+
+    <hr class="my-3">
+
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+            <a class="nav-link" routerLink="/project" routerLinkActive="active">Projects</a>
+        </li>
+        <li>
+            <a class="nav-link" routerLink="/review" routerLinkActive="active">Reviews</a>
+        </li>
+    </ul>
+
+    <hr class="my-3">
+
+    <div *ngIf="!isLoggedInFunction(); else loggedInActions" class="mt-2">
+        <a class="btn btn-primary w-100" [routerLink]="['/login']">Login – only admin</a>
     </div>
-    <div *ngIf="isLoggedInFunction()">
-        <button type="button" class="btn btn-primary" routerLinkActive="active" (click)="logout()">Logout</button>
-    </div>
+
+    <ng-template #loggedInActions>
+        <button type="button" class="btn btn-primary w-100" (click)="logout()">Logout</button>
+    </ng-template>
 </nav>

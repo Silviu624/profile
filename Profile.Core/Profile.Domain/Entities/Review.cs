@@ -9,9 +9,9 @@ namespace Profile.Domain.Entities
 {
     public class Review : BaseEntity
     {
-        public string ReviewComment { get; private set; }
-        public string Name { get; private set; }
-        public DateTime Date { get; private set; }
+        public string ReviewComment { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
 
         public Review(string reviewComment, string name, DateTime date)
         {

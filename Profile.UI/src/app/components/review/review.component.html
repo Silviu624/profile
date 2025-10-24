@@ -12,8 +12,8 @@
 
                     <div class="form-group col-12">
                         <label for="review">Review</label>
-                        <textarea class="form-control" id="review" name="review" [(ngModel)]="formData.review" rows="3"
-                            placeholder="Your Review"></textarea>
+                        <textarea class="form-control" id="review" name="review" [(ngModel)]="formData.reviewComment"
+                            rows="3" placeholder="Your Review"></textarea>
                     </div>
                 </div>
 
@@ -27,8 +27,14 @@
                 <h5>All Reviews</h5>
                 <div *ngIf="reviews.length === 0" class="text-muted">No reviews yet.</div>
                 <div *ngFor="let rev of reviews" class="mb-3">
-                    <strong>{{ rev.name }} ({{rev.date}})</strong>
-                    <p>{{ rev.review }}</p>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <strong>{{ rev.name }} ({{ rev.date | date:'yyyy-MM-dd' }})</strong>
+                        <button *ngIf="isLoggedInFunction()" class="btn btn-sm btn-danger ms-2"
+                            (click)="deleteReview(rev.id)">
+                            X
+                        </button>
+                    </div>
+                    <p>{{ rev.reviewComment }}</p>
                     <hr>
                 </div>
             </div>

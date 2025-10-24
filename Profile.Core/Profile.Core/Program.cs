@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Profile.Application.Features.Auth;
+using Profile.Application.Features.Educations;
+using Profile.Application.Features.Experiences;
 using Profile.Application.Features.Persons;
 using Profile.Application.Features.Projects;
+using Profile.Application.Features.Reviews;
 using Profile.Application.Interfaces;
 using Profile.Domain.Entities;
 using Profile.Infrastructure;
@@ -24,14 +27,37 @@ namespace Profile.Core
                 .AllowAnyMethod()));
 
             builder.Services.AddInfrastructure(builder.Configuration);
-
+            #region Adding Services
+            //project
             builder.Services.AddScoped<GetAllProjectsQuery>();
             builder.Services.AddScoped<CreateProjectCommand>();
             builder.Services.AddScoped<UpdateProjectCommand>();
             builder.Services.AddScoped<DeleteProjectCommand>();
+
+            //user
             builder.Services.AddScoped<CreateAuthUserCommand>();
+
+            //person
             builder.Services.AddScoped<GetPersonQuery>();
             builder.Services.AddScoped<UpdatePersonCommand>();
+
+            //experience
+            builder.Services.AddScoped<CreateExperienceCommand>();
+            builder.Services.AddScoped<DeleteExperienceCommand>();
+            builder.Services.AddScoped<GetAllExperiencesQuery>();
+            builder.Services.AddScoped<UpdateExperienceCommand>();
+
+            //education
+            builder.Services.AddScoped<CreateEducationCommand>();
+            builder.Services.AddScoped<DeleteEducationCommand>();
+            builder.Services.AddScoped<GetAllEducationsQuery>();
+            builder.Services.AddScoped<UpdateEducationCommand>();
+
+            //review
+            builder.Services.AddScoped<CreateReviewCommand>();
+            builder.Services.AddScoped<GetAllReviewsQuery>();
+            builder.Services.AddScoped<DeleteReviewCommand>();
+            #endregion
 
             var jwt = builder.Configuration.GetSection("Jwt");
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -55,7 +81,6 @@ namespace Profile.Core
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseHttpsRedirection();
-            //app.UseAuthorization();
             app.UseCors("profile");
             app.MapControllers();
 

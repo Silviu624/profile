@@ -1,5 +1,6 @@
 export class Review {
-    review: string = '';
+    id: string = '';
+    reviewComment: string = '';
     name: string = '';
-    date: string = '';
+    date: Date = new Date();
 }
