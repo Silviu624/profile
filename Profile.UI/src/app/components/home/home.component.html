@@ -40,7 +40,7 @@
                     <ng-container *ngIf="!editMode; else editContact">
                         <p class="card-text mb-2">
                             <strong>Date of birth:</strong>
-                            {{ person.dateOfBirth | date:'yyyy-MM-dd' }}
+                            {{ person.dateOfBirth | date:'dd-MM-yyyy' }}
                         </p>
                         <p class="card-text mb-2"><strong>Email:</strong> {{ person.email }}</p>
                         <p class="card-text mb-2"><strong>Phone:</strong> {{ person.phoneNumber }}</p>

@@ -10,7 +10,7 @@
                         [attr.data-bs-target]="'#panelsStayOpen-collapse' + i" aria-expanded="true"
                         [attr.aria-controls]="'panelsStayOpen-collapse' + i">
                         {{ experience.companyName }} - {{ experience.role }}
-                        ({{ experience.startDate | date:'yyyy-MM-dd' }} - {{ experience.endDate | date:'yyyy-MM-dd' }})
+                        ({{ experience.startDate | date:'dd-MM-yyyy' }} - {{ experience.endDate | date:'dd-MM-yyyy' }})
                     </button>
                 </div>
 

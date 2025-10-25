@@ -10,7 +10,7 @@
                         [attr.data-bs-target]="'#panelsStayOpen-collapse' + i" aria-expanded="true"
                         [attr.aria-controls]="'panelsStayOpen-collapse' + i">
                         {{ education.institutionName }} - {{ education.degree }}
-                        ({{ education.startDate | date:'yyyy-MM-dd' }} - {{ education.endDate | date:'yyyy-MM-dd' }})
+                        ({{ education.startDate | date:'dd-MM-yyyy' }} - {{ education.endDate | date:'dd-MM-yyyy' }})
                     </button>
                 </div>
 
