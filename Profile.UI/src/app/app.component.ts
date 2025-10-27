@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   isMobile = false;
 
   ngOnInit() {
-    // this.isMobile = window.innerWidth <= 768;
+    this.isMobile = window.innerWidth <= 768;
   }
 }
 
