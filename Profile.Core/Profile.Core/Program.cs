@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Profile.Application.Features.Auth;
 using Profile.Application.Features.Educations;
@@ -6,7 +7,6 @@ using Profile.Application.Features.Experiences;
 using Profile.Application.Features.Persons;
 using Profile.Application.Features.Projects;
 using Profile.Application.Features.Reviews;
-using Profile.Application.Interfaces;
 using Profile.Domain.Entities;
 using Profile.Infrastructure;
 using System.Text;
@@ -77,6 +77,14 @@ namespace Profile.Core
             builder.Services.AddAuthorization();
 
             var app = builder.Build();
+
+            
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ProfileDbContext>();
+                db.Database.Migrate();
+            }
 
             app.UseAuthentication();
             app.UseAuthorization();

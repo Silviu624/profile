@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: profile_db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Rita2025!
+      - MSSQL_PID=Developer
+    ports:
+      - "14333:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P \"$SA_PASSWORD\" -Q \"SELECT 1\" || /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P \"$SA_PASSWORD\" -Q \"SELECT 1\""]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  api:
+    build:
+      context: ./Profile.Core
+      dockerfile: Profile.Core/Dockerfile
+    image: ${API_IMAGE}
+    container_name: profile_api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=ProfileDb;User Id=sa;Password=Rita2025!;TrustServerCertificate=True;
+    expose:
+      - "8080"
+
+  web:
+    build:
+      context: ./Profile.UI
+      dockerfile: Dockerfile
+    image: ${WEB_IMAGE}
+    container_name: profile_web
+    depends_on:
+      - api
+    ports:
+      - "8088:80"
+
+volumes:
+  mssql_data:

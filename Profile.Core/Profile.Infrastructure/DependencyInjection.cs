@@ -14,7 +14,7 @@ namespace Profile.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
         {
-            var connectionString = config.GetConnectionString("ProfileDB");
+            var connectionString = config.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ProfileDbContext>(options =>
             {

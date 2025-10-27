@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/.angular/
+**/dist/
+**/.vs/
+**/.vscode/
+.git
+.gitignore
+Dockerfile*
+docker-compose*.yml
+.env
